@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=1024, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="Forty dispatches from Monday 23 November 2026: the world in one 1024 by 1024 news page.">
+  <title>23 November 2026 — The Global Brief</title>
+  <style>
+    /* Width: 24 + 232 + 16 + 232 + 16 + 232 + 16 + 232 + 24 = 1024.
+       Height: 24 + (22 + 84 + 36 + 38 + 28 + 734 + 34) + 24 = 1024.
+       All copy is typeset in full: no ellipsis, line clamps, or text clipping. */
+    *, *::before, *::after { box-sizing: border-box; }
+    :root {
+      --paper: #f3f0e7;
+      --ink: #172126;
+      --muted: #596066;
+      --rule: #c7c7be;
+      --red: #ae312b;
+      --blue: #24516a;
+      --green: #38654c;
+      --ochre: #886222;
+      --violet: #5d4c79;
+    }
+    html, body {
+      width: 1024px;
+      height: 1024px;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: var(--paper);
+      color: var(--ink);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      text-rendering: optimizeLegibility;
+    }
+    body { font-family: "DejaVu Sans", sans-serif; }
+    .page {
+      width: 1024px;
+      height: 1024px;
+      padding: 24px;
+      display: grid;
+      grid-template-rows: 22px 84px 36px 38px 28px 734px 34px;
+      position: relative;
+    }
+    .edition {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--ink);
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 14px;
+      letter-spacing: 1.5px;
+      white-space: nowrap;
+    }
+    .brand { display: flex; align-items: center; gap: 7px; }
+    .brand svg { width: 14px; height: 14px; color: var(--red); }
+    .edition-right { color: var(--muted); font-size: 8px; letter-spacing: 1.1px; }
+    h1 {
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: "DejaVu Sans", sans-serif;
+      font-size: 60px;
+      font-weight: 900;
+      line-height: 1;
+      letter-spacing: -3.5px;
+      white-space: nowrap;
+      border-bottom: 4px solid var(--ink);
+    }
+    h1 .date { color: var(--red); }
+    .deck {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      white-space: nowrap;
+    }
+    .deck strong { font-size: 23px; font-weight: 800; letter-spacing: -.9px; }
+    .deck small { font-size: 8px; font-weight: 700; letter-spacing: 1.4px; color: var(--muted); }
+    .summary {
+      align-self: center;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      background: #ded7bd;
+      border-top: 1px solid #bbb297;
+      border-bottom: 1px solid #bbb297;
+      white-space: nowrap;
+    }
+    .summary b {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      flex: 0 0 115px;
+      padding-left: 10px;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 9px;
+      letter-spacing: 1.2px;
+    }
+    .summary p {
+      margin: 0;
+      padding: 0 12px;
+      font-family: "DejaVu Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: -.22px;
+      line-height: 18px;
+    }
+    .summary i { padding: 0 5px; font-style: normal; color: var(--red); }
+    .guide {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: .55px;
+      white-space: nowrap;
+    }
+    .guide .topics { color: var(--muted); }
+    .guide .clock { letter-spacing: .3px; }
+    .stories {
+      min-width: 0;
+      min-height: 0;
+      display: grid;
+      grid-template-columns: repeat(4, 232px);
+      column-gap: 16px;
+    }
+    .column {
+      position: relative;
+      min-width: 0;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .column + .column::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 9px;
+      left: -8px;
+      width: 1px;
+      background: var(--rule);
+    }
+    .region {
+      flex: 0 0 24px;
+      margin: 0;
+      padding: 0 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--ink);
+      color: #fffdf6;
+      font-size: 10px;
+      line-height: 14px;
+      font-weight: 800;
+      letter-spacing: 1.1px;
+      white-space: nowrap;
+    }
+    .region.later { margin-top: 10px; }
+    .region small { font-size: 8px; font-weight: 400; letter-spacing: .5px; opacity: .8; }
+    .war, .iran { background: var(--red); }
+    .eu, .markets { background: var(--blue); }
+    .africa { background: var(--green); }
+    .asia { background: var(--ochre); }
+    .science { background: var(--violet); }
+    .story {
+      min-width: 0;
+      min-height: 0;
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+      padding: 5px 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .story:last-child { border-bottom: 0; }
+    .meta {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      min-width: 0;
+      height: 11px;
+      font-size: 8px;
+      line-height: 11px;
+      white-space: nowrap;
+    }
+    .number {
+      width: 18px;
+      flex: 0 0 18px;
+      font-size: 10px;
+      font-weight: 800;
+      color: var(--red);
+      font-variant-numeric: tabular-nums;
+    }
+    time {
+      font-family: "DejaVu Sans Mono", monospace;
+      font-size: 8px;
+      color: #465058;
+      letter-spacing: -.25px;
+    }
+    .source {
+      margin-left: auto;
+      font-family: "DejaVu Sans", sans-serif;
+      font-size: 7.5px;
+      font-weight: 700;
+      letter-spacing: .1px;
+      color: #465058;
+      text-transform: uppercase;
+    }
+    h3 {
+      margin: 0;
+      font-family: "DejaVu Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 16px;
+      letter-spacing: -.38px;
+      white-space: nowrap;
+    }
+    .story p {
+      margin: 0;
+      font-family: "DejaVu Sans", sans-serif;
+      font-size: 9px;
+      line-height: 12px;
+      letter-spacing: -.19px;
+      color: #465058;
+      white-space: nowrap;
+    }
+    .lead h3 { color: var(--red); }
+    .compact h3 { font-size: 11.5px; }
+    .compact p { font-size: 8.7px; }
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 3px solid var(--ink);
+      font-size: 15px;
+      font-weight: 800;
+      line-height: 21px;
+      letter-spacing: -.1px;
+      white-space: nowrap;
+    }
+    @page { size: 1024px 1024px; margin: 0; }
+  </style>
+</head>
+<body>
+<main class="page" aria-label="World news for Monday 23 November 2026">
+  <div class="edition">
+    <div class="brand">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4.5" ry="10"/><path d="M2 12h20M4 6.5h16M4 17.5h16"/></svg>
+      THE GLOBAL BRIEF
+    </div>
+    <span class="edition-right">WORLD EDITION &nbsp; / &nbsp; 24 HOURS &nbsp; / &nbsp; ISSUE 327</span>
+  </div>
+  <h1><span>MONDAY</span> <span class="date">23 NOVEMBER</span> <span>2026</span></h1>
+  <div class="deck"><strong>THE WORLD IN ONE DAY.</strong><small>CONFLICT &nbsp; / &nbsp; CAPITAL &nbsp; / &nbsp; CLIMATE &nbsp; / &nbsp; DISCOVERY</small></div>
+  <section class="summary" aria-label="Day summary">
+    <b>DAY SUMMARY</b>
+    <p>Ukraine war reaches Libya<i>•</i>Hormuz tensions rise<i>•</i>Dollar surges<i>•</i>COP31 ends without a deal</p>
+  </section>
+  <div class="guide"><span class="topics">WAR / UKRAINE &nbsp; · &nbsp; IRAN &nbsp; · &nbsp; EU &nbsp; · &nbsp; AFRICA &nbsp; · &nbsp; MARKETS &nbsp; · &nbsp; ASIA &nbsp; · &nbsp; SCIENCE &nbsp; · &nbsp; AMERICAS</span><span class="clock">UTC BRIEF LOG &nbsp; / &nbsp; † EVENING ROUNDUP</span></div>
+
+  <!-- The 30 requested reports retain the supplied UTC times and source tags.
+       Ten additional reports are linked with cite attributes. For NASA's two
+       date-only releases, 23:00Z† denotes the evening briefing slot, not a
+       claimed publication time. All styling and vector artwork are local. -->
+  <div class="stories">
+    <section class="column" aria-label="War, Ukraine, Iran and the Gulf">
+      <h2 class="region war">WAR / UKRAINE <small>01—06</small></h2>
+      <article class="story lead">
+        <div class="meta"><span class="number">01</span><time datetime="2026-11-23T04:30:00Z">04:30Z</time><span class="source">Al Jazeera</span></div>
+        <h3>Russian strikes kill 15 in Kyiv region</h3>
+        <p>At least 15 dead; homes hit in overnight attacks.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">02</span><time datetime="2026-11-23T06:00:00Z">06:00Z</time><span class="source">Guardian</span></div>
+        <h3>Naval drones sink Russian corvette</h3>
+        <p>Zelensky hails “exemplary” Merkury hit in Libya.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">03</span><time datetime="2026-11-23T07:10:00Z">07:10Z</time><span class="source">Reuters</span></div>
+        <h3>Eastern Libya condemns drone raid</h3>
+        <p>Government denounces attack on Russian ships.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">04</span><time datetime="2026-11-23T08:20:00Z">08:20Z</time><span class="source">Politico EU</span></div>
+        <h3>EU unveils 19th Russia sanctions</h3>
+        <p>Banks, soldiers and athletes face new restrictions.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">05</span><time datetime="2026-11-23T09:00:00Z">09:00Z</time><span class="source">Euractiv</span></div>
+        <h3>Czechs revolt over Ukraine funding</h3>
+        <p>Prague disputes cuts to €100bn funding allocation.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">06</span><time datetime="2026-11-23T10:00:00Z">10:00Z</time><span class="source">Euronews</span></div>
+        <h3>EU military chief: speed up defence</h3>
+        <p>Hybrid threats stretch from Baltic to Black Sea.</p>
+      </article>
+      <h2 class="region iran later">IRAN / GULF <small>07—11</small></h2>
+      <article class="story lead">
+        <div class="meta"><span class="number">07</span><time datetime="2026-11-23T05:40:00Z">05:40Z</time><span class="source">AP</span></div>
+        <h3>Iran vows to fight Hormuz blockade</h3>
+        <p>“Every means” pledged after Trump’s threat.</p>
+      </article>
+      <article class="story compact">
+        <div class="meta"><span class="number">08</span><time datetime="2026-11-23T06:30:00Z">06:30Z</time><span class="source">Truth Social / Reuters</span></div>
+        <h3>Trump claims Iran escalated attacks</h3>
+        <p>Links drone, missile surge to Democrats’ midterm wins.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">09</span><time datetime="2026-11-23T07:00:00Z">07:00Z</time><span class="source">US News</span></div>
+        <h3>US confirms Iran attack in Bahrain</h3>
+        <p>American positions targeted, US officials say.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">10</span><time datetime="2026-11-23T09:37:00Z">09:37Z</time><span class="source">Jerusalem Post</span></div>
+        <h3>Expert warns of a bad Iran deal</h3>
+        <p>Could be worse for Israel than renewed war, he says.</p>
+      </article>
+      <article class="story compact">
+        <div class="meta"><span class="number">11</span><time datetime="2026-11-23T14:48:00Z">14:48Z</time><span class="source">J. Post / Xinhua</span></div>
+        <h3>Israel strike unlikely without US</h3>
+        <p>IDF warns Netanyahu: solo attack risks regional war.</p>
+      </article>
+    </section>
+
+    <section class="column" aria-label="Europe and Africa">
+      <h2 class="region eu">EU / EUROPE <small>12—16</small></h2>
+      <article class="story">
+        <div class="meta"><span class="number">12</span><time datetime="2026-11-23T07:45:00Z">07:45Z</time><span class="source">Euractiv</span></div>
+        <h3>Eight EU states back carbon market</h3>
+        <p>Alliance pushes back against calls for a delay.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">13</span><time datetime="2026-11-23T09:30:00Z">09:30Z</time><span class="source">Politico EU</span></div>
+        <h3>Far right plots EU transformation</h3>
+        <p>Patriots’ Kinga Gál builds on national election wins.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">14</span><time datetime="2026-11-23T13:00:00Z">13:00Z</time><span class="source">EU Parliament</span></div>
+        <h3>MEPs debate 2028–2034 EU budget</h3>
+        <p>Parliament session takes up 2028–2034 spending.</p>
+      </article>
+      <article class="story" cite="https://uk.marketscreener.com/news/denmark-to-propose-mobile-phone-ban-in-schools-in-2027-ce7851dad889f222">
+        <div class="meta"><span class="number">15</span><time datetime="2026-11-23T09:39:00Z">09:39Z</time><span class="source">Reuters</span></div>
+        <h3>Denmark plans school phone ban</h3>
+        <p>2027 school-year proposal includes web filtering.</p>
+      </article>
+      <article class="story" cite="https://amp.dw.com/en/german-police-respond-to-multiple-school-bomb-threats/a-80018842">
+        <div class="meta"><span class="number">16</span><time datetime="2026-11-23T14:01:00Z">14:01Z</time><span class="source">DW</span></div>
+        <h3>German schools face bomb threats</h3>
+        <p>Police investigate suspected hoax threats.</p>
+      </article>
+      <h2 class="region africa later">AFRICA <small>17—21</small></h2>
+      <article class="story">
+        <div class="meta"><span class="number">17</span><time datetime="2026-11-23T08:00:00Z">08:00Z</time><span class="source">BBC</span></div>
+        <h3>Kenya and DR Congo restore ties</h3>
+        <p>Ruto and Tshisekedi agree full diplomatic relations.</p>
+      </article>
+      <article class="story lead">
+        <div class="meta"><span class="number">18</span><time datetime="2026-11-23T09:00:00Z">09:00Z</time><span class="source">allAfrica</span></div>
+        <h3>COP31 ends without a global deal</h3>
+        <p>Climate summit closes without a global agreement.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">19</span><time datetime="2026-11-23T10:00:00Z">10:00Z</time><span class="source">Middle East Eye</span></div>
+        <h3>Libya demands answers on sinking</h3>
+        <p>Russian warship loss puts the Libyan port in focus.</p>
+      </article>
+      <article class="story" cite="https://cphia.africacdc.org/">
+        <div class="meta"><span class="number">20</span><time datetime="2026-11-23T06:00:00Z">06:00Z</time><span class="source">Africa CDC</span></div>
+        <h3>Africa health summit opens in Addis</h3>
+        <p>CPHIA puts health sovereignty and financing first.</p>
+      </article>
+      <article class="story" cite="https://www.breakingviews.com/video/watch/idRW021220112026RP1/">
+        <div class="meta"><span class="number">21</span><time datetime="2026-11-23T06:00:00Z">06:00Z</time><span class="source">Reuters</span></div>
+        <h3>Congo’s hidden Ebola toll revealed</h3>
+        <p>Cemetery satellite analysis points to missing deaths.</p>
+      </article>
+    </section>
+
+    <section class="column" aria-label="Markets and Asia">
+      <h2 class="region markets">MARKETS <small>22—25</small></h2>
+      <article class="story lead">
+        <div class="meta"><span class="number">22</span><time datetime="2026-11-23T09:30:00Z">09:30Z</time><span class="source">Reuters</span></div>
+        <h3>Dollar hits 19-month high vs euro</h3>
+        <p>Hawkish Federal Reserve bets lift the US currency.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">23</span><time datetime="2026-11-23T10:17:00Z">10:17Z</time><span class="source">Bloomberg</span></div>
+        <h3>US futures rebound after AI sell-off</h3>
+        <p>Dow, S&amp;P entered correction territory on Friday.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">24</span><time datetime="2026-11-23T11:00:00Z">11:00Z</time><span class="source">CNBC</span></div>
+        <h3>Treasury yields jump; Fed in focus</h3>
+        <p>Markets await New York Fed chief Williams’ speech.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">25</span><time datetime="2026-11-23T12:00:00Z">12:00Z</time><span class="source">CNBC</span></div>
+        <h3>Trump backs Huang’s Nvidia return</h3>
+        <p>Says he spoke to board; sees no CEO security risk.</p>
+      </article>
+      <h2 class="region asia later">ASIA <small>26—31</small></h2>
+      <article class="story">
+        <div class="meta"><span class="number">26</span><time datetime="2026-11-23T08:00:00Z">08:00Z</time><span class="source">World News Center</span></div>
+        <h3>Xi snubs Japan’s PM at APEC</h3>
+        <p>Record 93% of Japanese hold a dim view of China.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">27</span><time datetime="2026-11-23T09:15:00Z">09:15Z</time><span class="source">Asia News Network</span></div>
+        <h3>China urges US to lift telecom curbs</h3>
+        <p>Beijing calls for restrictions on its firms to end.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">28</span><time datetime="2026-11-23T10:30:00Z">10:30Z</time><span class="source">Asahi Shimbun</span></div>
+        <h3>Taiwan warns Canada on China ties</h3>
+        <p>Carney risks exposure by relying on Beijing, it says.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">29</span><time datetime="2026-11-23T11:45:00Z">11:45Z</time><span class="source">Lowy Institute</span></div>
+        <h3>Asia Power Index: US stumbles</h3>
+        <p>Lowy calls Washington “distracted and disengaged”.</p>
+      </article>
+      <article class="story" cite="https://apnews.com/article/18ba7c043a429d59d9cdb5a11bcfd5c6">
+        <div class="meta"><span class="number">30</span><time datetime="2026-11-23T06:26:00Z">06:26Z</time><span class="source">AP</span></div>
+        <h3>Indonesia searches for 34 workers</h3>
+        <p>Monday rescue effort follows Saturday’s factory fire.</p>
+      </article>
+      <article class="story" cite="https://apnews.com/article/f912a60316e544dbabfba9a1aef4e887">
+        <div class="meta"><span class="number">31</span><time datetime="2026-11-23T17:16:00Z">17:16Z</time><span class="source">AP</span></div>
+        <h3>Armenia proposes new constitution</h3>
+        <p>Pashinyan seeks to advance peace with Azerbaijan.</p>
+      </article>
+    </section>
+
+    <section class="column" aria-label="Science, space and the Americas">
+      <h2 class="region science">SCIENCE / SPACE <small>32—36</small></h2>
+      <article class="story">
+        <div class="meta"><span class="number">32</span><time datetime="2026-11-23T06:00:00Z">06:00Z</time><span class="source">Space.com</span></div>
+        <h3>SpaceX resets launch-pad record</h3>
+        <p>Two rockets, one pad, just 32 hours between flights.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">33</span><time datetime="2026-11-23T07:00:00Z">07:00Z</time><span class="source">ScienceDaily</span></div>
+        <h3>Voyager 1 is one light-day away</h3>
+        <p>Light takes 24 hours to reach the distant spacecraft.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">34</span><time datetime="2026-11-23T08:30:00Z">08:30Z</time><span class="source">Live Science</span></div>
+        <h3>Black holes could spin apart</h3>
+        <p>Study suggests extreme spin could make them split.</p>
+      </article>
+      <article class="story" cite="https://science.nasa.gov/missions/webb/nasas-webb-shows-how-supernova-dust-chronicles-star-evolution/">
+        <div class="meta"><span class="number">35</span><time datetime="2026-11-23T23:00:00Z">23:00Z†</time><span class="source">NASA / ESA</span></div>
+        <h3>Webb traces a star’s final hours</h3>
+        <p>Cas A dust reveals pre-supernova shell mergers.</p>
+      </article>
+      <article class="story" cite="https://www.nasa.gov/directorates/rtmd/nasa-seeks-partners-to-design-first-nuclear-reactor-for-the-moon/">
+        <div class="meta"><span class="number">36</span><time datetime="2026-11-23T23:00:00Z">23:00Z†</time><span class="source">NASA</span></div>
+        <h3>NASA seeks lunar reactor partners</h3>
+        <p>Agency invites designs for the Moon’s first reactor.</p>
+      </article>
+      <h2 class="region americas later">AMERICAS <small>37—40</small></h2>
+      <article class="story">
+        <div class="meta"><span class="number">37</span><time datetime="2026-11-23T11:20:00Z">11:20Z</time><span class="source">USA Today</span></div>
+        <h3>Iowa explosives plant blast probed</h3>
+        <p>Lead azide factory blast; Thanksgiving week begins.</p>
+      </article>
+      <article class="story">
+        <div class="meta"><span class="number">38</span><time datetime="2026-11-23T12:30:00Z">12:30Z</time><span class="source">Kyodo</span></div>
+        <h3>Trump briefs Japan on summit plan</h3>
+        <p>Proposed historic trilateral talks: US, China, Russia.</p>
+      </article>
+      <article class="story" cite="https://apnews.com/article/c26a27fd648f766252b54724d8a897a3">
+        <div class="meta"><span class="number">39</span><time datetime="2026-11-23T17:19:00Z">17:19Z</time><span class="source">AP</span></div>
+        <h3>US holiday travel faces turmoil</h3>
+        <p>Airline glitches and storms threaten Thanksgiving.</p>
+      </article>
+      <article class="story" cite="https://apnews.com/article/452cc64e7169a55868f797982d0e8238">
+        <div class="meta"><span class="number">40</span><time datetime="2026-11-23T13:44:00Z">13:44Z</time><span class="source">AP</span></div>
+        <h3>States sue Musk firms over Grok</h3>
+        <p>Lawsuits allege failures over sexualized AI images.</p>
+      </article>
+    </section>
+  </div>
+  <footer>40 stories. One day. 23 November 2026.</footer>
+</main>
+</body>
+</html>
